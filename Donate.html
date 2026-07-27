@@ -1,0 +1,184 @@
+html_content = """<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贊助支持 | 社會福利基金會</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- 全局導覽列 (Header) -->
+    <header class="bg-white shadow-sm fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- 基金會 Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-blue-800">社會福利基金會</a>
+                </div>
+                <!-- 主選單 (桌機版) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#about" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">關於我們與責信</a>
+                    <a href="index.html#services" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">尋求協助</a>
+                    <a href="index.html#advocacy" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">倡議與觀點</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 網頁主要內容區 -->
+    <main class="pt-16 pb-20">
+        
+        <!-- 頁面標題區塊 -->
+        <section class="bg-blue-800 text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">您的支持，是改變的力量</h1>
+                <p class="text-lg text-blue-200 max-w-2xl mx-auto">
+                    每一筆捐款，都將直接投入第一線的弱勢扶助與社會倡議專案。邀請您與我們攜手，接住每一個需要幫助的生命。
+                </p>
+            </div>
+        </section>
+
+        <!-- 捐款表單區塊 -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+            <div class="bg-white rounded-lg shadow-xl p-6 md:p-10 border border-gray-100">
+                <form action="#" method="POST">
+                    
+                    <!-- 步驟一：選擇捐款方式與金額 -->
+                    <div class="mb-10">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2 mb-6 inline-block">1. 選擇捐款方式與金額</h2>
+                        
+                        <!-- 捐款頻率 -->
+                        <div class="flex space-x-4 mb-6">
+                            <label class="flex-1 cursor-pointer">
+                                <input type="radio" name="frequency" value="monthly" class="peer sr-only" checked>
+                                <div class="text-center p-4 rounded-md border-2 border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-50 peer-checked:text-blue-700 font-medium transition-colors">
+                                    定期定額捐款
+                                </div>
+                            </label>
+                            <label class="flex-1 cursor-pointer">
+                                <input type="radio" name="frequency" value="onetime" class="peer sr-only">
+                                <div class="text-center p-4 rounded-md border-2 border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-50 peer-checked:text-blue-700 font-medium transition-colors">
+                                    單筆捐款
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- 捐款金額 -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="amount" value="500" class="peer sr-only">
+                                <div class="text-center p-3 rounded-md border border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white transition-colors">NT$ 500</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="amount" value="1000" class="peer sr-only" checked>
+                                <div class="text-center p-3 rounded-md border border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white transition-colors">NT$ 1,000</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="amount" value="2000" class="peer sr-only">
+                                <div class="text-center p-3 rounded-md border border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white transition-colors">NT$ 2,000</div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="amount" value="other" class="peer sr-only">
+                                <div class="text-center p-3 rounded-md border border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-checked:text-white transition-colors">自訂金額</div>
+                            </label>
+                        </div>
+                        <div class="hidden" id="customAmountDiv">
+                             <input type="number" placeholder="請輸入自訂金額 (最低 NT$ 100)" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mt-2">
+                        </div>
+                    </div>
+
+                    <!-- 步驟二：填寫捐款人資料 -->
+                    <div class="mb-10">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2 mb-6 inline-block">2. 填寫捐款人資料</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">姓名 / 單位名稱 *</label>
+                                <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">手機號碼 *</label>
+                                <input type="tel" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">電子郵件 *</label>
+                                <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 步驟三：收據資訊 -->
+                    <div class="mb-10">
+                        <h2 class="text-xl font-bold text-gray-900 border-b-2 border-blue-500 pb-2 mb-6 inline-block">3. 收據資訊</h2>
+                        
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">需要捐款收據嗎？</label>
+                            <div class="space-x-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="receipt" value="electronic" class="text-blue-600 focus:ring-blue-500 h-4 w-4" checked>
+                                    <span class="ml-2 text-gray-700">需要電子收據 (響應環保)</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="receipt" value="paper" class="text-blue-600 focus:ring-blue-500 h-4 w-4">
+                                    <span class="ml-2 text-gray-700">需要紙本收據 (年度寄發)</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="receipt" value="none" class="text-blue-600 focus:ring-blue-500 h-4 w-4">
+                                    <span class="ml-2 text-gray-700">不需要收據</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 提交按鈕 -->
+                    <div class="text-center pt-6 border-t border-gray-200">
+                        <button type="button" class="w-full md:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md shadow-md transition-colors text-lg">
+                            前往付款 (信用卡 / 虛擬帳號)
+                        </button>
+                        <p class="text-xs text-gray-500 mt-4">點擊即表示您同意本會的 <a href="#" class="text-blue-600 underline">隱私權政策</a> 與 <a href="#" class="text-blue-600 underline">捐款條款</a>。</p>
+                    </div>
+
+                </form>
+            </div>
+            
+            <!-- 責信宣告小提示 -->
+            <div class="mt-8 text-center text-sm text-gray-500 flex items-center justify-center">
+                 <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                 本會為依法立案之公益團體，您的捐款可依法抵稅。所有款項皆受主管機關監督，專款專用。
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾資訊 (Footer) -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            &copy; 2026 財團法人社會福利基金會. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 簡單的 JavaScript 切換自訂金額輸入框顯示 (教學用途) -->
+    <script>
+        const amountRadios = document.querySelectorAll('input[name="amount"]');
+        const customAmountDiv = document.getElementById('customAmountDiv');
+
+        amountRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if(e.target.value === 'other') {
+                    customAmountDiv.classList.remove('hidden');
+                } else {
+                    customAmountDiv.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>"""
+with open('donation_page.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+print("File generated")
