@@ -3,131 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>推動《社會救助法》修法：看見貧窮線下的黑數</title>
+    <title>防空攔截 - 戰術射擊模擬 (多關卡版)</title>
     <style>
-        :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2b6cb0;
-            --text-color: #2d3748;
-            --bg-color: #f4f7f6;
-            --white: #ffffff;
-            --border-color: #e2e8f0;
-            --note-bg: #fffaf0;
-            --note-border: #ed8936;
-        }
-
         body {
-            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
             margin: 0;
-            padding: 2rem 1rem;
+            background-color: #1a1a2e;
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 3rem 4rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border-top: 5px solid var(--primary-color);
+        #game-container {
+            position: relative;
         }
-
-        header {
-            margin-bottom: 2.5rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1.5rem;
+        canvas {
+            background-color: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
         }
-
+        #ui {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        #game-image {
+            max-width: 200px; /* 限制圖片最大寬度 */
+            height: auto; /* 保持長寬比 */
+            margin-bottom: 15px; /* 圖片與標題之間的距離 */
+            border-radius: 8px; /* 圖片圓角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 圖片陰影 */
+        }
         h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            line-height: 1.4;
-            margin: 0 0 1rem 0;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: #38bdf8;
         }
-
-        .meta-info {
-            font-size: 0.9rem;
-            color: #718096;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        article {
-            font-size: 1.1rem;
-            text-align: justify;
-        }
-
         p {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            color: var(--secondary-color);
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--secondary-color);
-            padding-left: 0.8rem;
-        }
-
-        .editorial-note {
-            background-color: var(--note-bg);
-            border-left: 4px solid var(--note-border);
-            padding: 1.5rem;
-            margin-top: 3rem;
-            font-size: 0.95rem;
-            color: #5c3a21;
-        }
-
-        .editorial-note strong {
-            color: #c05621;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 2rem 1.5rem;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+            margin: 0;
+            font-size: 14px;
+            color: #94a3b8;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>推動《社會救助法》修法：看見貧窮線下的黑數</h1>
-            <div class="meta-info">社論與政策分析 | 社會安全網專題</div>
-        </header>
-
-        <article>
-            <p>台灣的社會安全網存在著長期被忽視的結構性漏洞，其中最為嚴重的問題之一，便是《社會救助法》中關於「虛擬所得」的規範。這項立意或許在於防弊與鼓勵就業的法條，在現實執行層面上，卻成為將無數弱勢家庭排拒於救助體系之外的高牆，造就了龐大且無形的「貧窮線下黑數」。</p>
-
-            <h2 class="section-title">虛擬所得：脫離現實的制度陷阱</h2>
-            <p>現行《社會救助法》規定，在審核低收入戶及中低收入戶資格時，對於十六歲以上、未滿六十五歲且具備工作能力者，系統會依法逕行設算一筆「虛擬所得」，通常以基本工資計算。這種「假設你有收入」的制度邏輯，完全忽略了勞動市場的真實困境，包含高齡就業歧視、身心隱性障礙、需長期照顧患病家屬等結構性阻礙。這群人或許處於失業狀態，或僅能從事非典型、零碎的底層勞動，但法律卻預設他們擁有穩定的全職收入。</p>
-
-            <p>結果便是，許多家庭的總所得在加上這筆根本不存在的虛擬收入後，帳面上瞬間跨越了法定貧窮線。這些無法取得低收入戶資格的邊緣戶，不僅無法領取生活補助，更被排除在醫療減免、教育補助及住宅補貼等配套資源之外。他們在數據上看似擁有維持基本生活的能力，現實中卻陷入越陷越深的貧窮迴圈。</p>
-
-            <h2 class="section-title">家戶人口合併計算的沉痾</h2>
-            <p>除虛擬所得外，現行法規中的「家戶人口合併計算」原則，強制將未同住、甚至早已無聯絡的直系血親財產納入審核，進一步加劇了資格取得的難度。許多單親家庭或因家庭暴力離家的受害者，因無法提供戶籍內所有親屬的財產證明，或因名義上的親屬擁有資產，而被迫承擔無法獲得救助的苦果。這項設計忽略了現代家庭結構的碎裂化，將社會救助的責任強加於功能已失調的家庭網絡之上。</p>
-
-            <h2 class="section-title">政策重構：回歸實質救助精神</h2>
-            <p>要落實真正的社會救助，推動《社會救助法》修法已刻不容緩。首先，必須檢討並廢除或大幅修正「虛擬所得」的設算機制，將審查標準回歸家戶的「實際收入與資產」，並導入更具彈性的社工專業評估機制，而非僅依賴僵化的法條公式。其次，放寬家庭人口的計算範圍，改以實際共同生活的家戶為基準。對於具備工作能力但無法就業的弱勢者，國家應提供積極的就業輔導與支持服務，而非先以虛設的所得門檻將其懲罰性地排除。</p>
-
-            <p>一個國家的進步程度，取決於它如何對待最弱勢的群體。《社會救助法》不應是阻擋窮人求生的門檻，而必須成為接住每一位墜落者的堅實網面。唯有正視現行法規帶來的制度性排除，我們才能真正消除隱形貧窮，建立具備實質公平的社會。</p>
-        </article>
-
-        <div class="editorial-note">
-            <strong>【編按：疑義與情報盲點聲明】</strong><br>
-            因本次分析任務受限於系統連線狀態，無法啟動外部開源情報（OSINT）與新聞搜尋。關於《社會救助法》於立法院之最新一期修法進度、各黨團提案版本差異、以及具體排審期程等動態情報，<strong>【註：目前開源情報尚無法即時驗證】</strong>。本文僅聚焦於該法案之法理結構與政策實務層面進行戰略性分析。
-        </div>
+    <div id="ui">
+        <!-- 加入指定圖片 -->
+        <img id="game-image" src="https://i.meee.com.tw/JtpgEjE.jpg" alt="遊戲主題圖">
+        <h1>防空攔截任務</h1>
+        <p>控制方式：【← / →】鍵移動 | 【空白鍵】發射防空砲 / 勝利時下一關 | 【R】鍵重新開始</p>
     </div>
 
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 遊戲狀態變數
+        let score = 0;
+        let gameOver = false;
+        let victory = false;
+        let currentLevel = 1; // 初始關卡
+        let animationId;
+
+        // 關卡配置：不同關卡的速度與射擊機率
+        const levelConfigs = {
+            1: { baseEnemySpeed: 0.5, shootProbability: 0.0001 }, // 很慢，很少射擊
+            2: { baseEnemySpeed: 0.8, shootProbability: 0.0003 }, // 稍快，稍多射擊
+            3: { baseEnemySpeed: 1.2, shootProbability: 0.0007 }, // 中等
+            4: { baseEnemySpeed: 1.5, shootProbability: 0.0010 }, // 正常 (接近原版)
+            5: { baseEnemySpeed: 2.0, shootProbability: 0.0015 }, // 快速，密集射擊
+            6: { baseEnemySpeed: 2.5, shootProbability: 0.0020 }  // 極速挑戰
+        };
+
+        // 按鍵追蹤
+        const keys = {
+            ArrowLeft: false,
+            ArrowRight: false,
+            Space: false
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'ArrowLeft') keys.ArrowLeft = true;
+            if (e.code === 'ArrowRight') keys.ArrowRight = true;
+            if (e.code === 'Space') keys.Space = true;
+            if (e.key.toLowerCase() === 'r') {
+                if (gameOver || victory) initGame(1); // 如果結束或勝利，按 R 鍵重新開始第 1 關
+            }
+            if (e.code === 'Space' && victory) {
+                nextLevel(); // 勝利時按空白鍵進入下一關
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.code === 'ArrowLeft') keys.ArrowLeft = false;
+            if (e.code === 'ArrowRight') keys.ArrowRight = false;
+            if (e.code === 'Space') keys.Space = false;
+        });
+
+        // 玩家物件 (防空砲)
+        const player = {
+            x: canvas.width / 2 - 25,
+            y: canvas.height - 40,
+            width: 50,
+            height: 20,
+            speed: 6,
+            color: '#4ade80', // 亮綠色
+            cooldown: 0,
+            maxCooldown: 15 // 射擊間隔幀數
+        };
+
+        // 陣列儲存實體
+        let bullets = [];
+        let enemyBullets = [];
+        let enemies = [];
+
+        // 敵軍參數
+        const enemyRows = 5;
+        const enemyCols = 11;
+        const enemyWidth = 40;
+        const enemyHeight = 25;
+        const enemyPadding = 15;
+        const enemyOffsetTop = 50;
+        const enemyOffsetLeft = 80;
+        
+        let enemyDirection = 1; // 1向右, -1向左
+        let baseEnemySpeed = 1.5;
+        let currentEnemySpeed = baseEnemySpeed;
+
+        // 初始化遊戲或關卡
+        function initGame(level) {
+            currentLevel = level;
+            const config = levelConfigs[currentLevel] || levelConfigs[Object.keys(levelConfigs).length]; // 超過最後一關則使用最後一關
+            
+            if (level === 1) score = 0; // 如果是第 1 關，重置分數
+            gameOver = false;
+            victory = false;
+            bullets = [];
+            enemyBullets = [];
+            enemies = [];
+            
+            player.x = canvas.width / 2 - player.width / 2;
+            enemyDirection = 1;
+            baseEnemySpeed = config.baseEnemySpeed; // 使用配置的速度
+            currentEnemySpeed = baseEnemySpeed;
+
+            for (let r = 0; r < enemyRows; r++) {
+                for (let c = 0; c < enemyCols; c++) {
+                    let enemyX = enemyOffsetLeft + c * (enemyWidth + enemyPadding);
+                    let enemyY = enemyOffsetTop + r * (enemyHeight + enemyPadding);
+                    // 根據列數給予不同顏色
+                    let color = r < 2 ? '#ef4444' : (r < 4 ? '#f59e0b' : '#3b82f6');
+                    enemies.push({ x: enemyX, y: enemyY, width: enemyWidth, height: enemyHeight, color: color, points: (5 - r) * 10 });
+                }
+            }
+        }
+
+        // 進入下一關
+        function nextLevel() {
+            initGame(currentLevel + 1);
+        }
+
+        // 碰撞偵測 (AABB)
+        function rectIntersect(r1, r2) {
+            return !(r2.x > r1.x + r1.width || 
+                     r2.x + r2.width < r1.x || 
+                     r2.y > r1.y + r1.height ||
+                     r2.y + r2.height < r1.y);
+        }
+
+        // 更新遊戲邏輯
+        function update() {
+            if (gameOver || victory) return;
+
+            // 獲取當前關卡配置
+            const config = levelConfigs[currentLevel] || levelConfigs[Object.keys(levelConfigs).length];
+
+            // 玩家移動
+            if (keys.ArrowLeft && player.x > 0) player.x -= player.speed;
+            if (keys.ArrowRight && player.x < canvas.width - player.width) player.x += player.speed;
+
+            // 玩家射擊
+            if (player.cooldown > 0) player.cooldown--;
+            if (keys.Space && player.cooldown === 0) {
+                bullets.push({
+                    x: player.x + player.width / 2 - 3,
+                    y: player.y,
+                    width: 6,
+                    height: 15,
+                    speed: 8,
+                    color: '#facc15' // 黃色曳光彈
+                });
+                player.cooldown = player.maxCooldown;
+            }
+
+            // 更新玩家子彈
+            for (let i = bullets.length - 1; i >= 0; i--) {
+                bullets[i].y -= bullets[i].speed;
+                if (bullets[i].y < 0) {
+                    bullets.splice(i, 1);
+                }
+            }
+
+            // 敵軍移動邏輯
+            let moveDown = false;
+            let maxRight = 0;
+            let minLeft = canvas.width;
+
+            // 動態難度：敵人越少速度越快，基礎速度由關卡決定
+            let speedMultiplier = 1 + ((enemyRows * enemyCols - enemies.length) / (enemyRows * enemyCols)) * 1.5;
+            currentEnemySpeed = baseEnemySpeed * speedMultiplier;
+
+            enemies.forEach(enemy => {
+                enemy.x += currentEnemySpeed * enemyDirection;
+                if (enemy.x + enemy.width > maxRight) maxRight = enemy.x + enemy.width;
+                if (enemy.x < minLeft) minLeft = enemy.x;
+            });
+
+            // 觸碰邊界時反轉並下移
+            if (maxRight > canvas.width - 20 || minLeft < 20) {
+                enemyDirection *= -1;
+                moveDown = true;
+            }
+
+            // 更新敵軍反擊與下移
+            for (let i = enemies.length - 1; i >= 0; i--) {
+                let enemy = enemies[i];
+                if (moveDown) enemy.y += 20;
+
+                // 隨機投擲炸彈，機率與關卡和動態難度掛鉤
+                let currentShootProbability = config.shootProbability * speedMultiplier;
+                if (Math.random() < currentShootProbability) {
+                    enemyBullets.push({
+                        x: enemy.x + enemy.width / 2 - 2,
+                        y: enemy.y + enemy.height,
+                        width: 4,
+                        height: 12,
+                        speed: 4,
+                        color: '#f43f5e'
+                    });
+                }
+
+                // 檢查敵軍是否觸地
+                if (enemy.y + enemy.height >= player.y) {
+                    gameOver = true;
+                }
+            }
+
+            // 更新敵軍子彈
+            for (let i = enemyBullets.length - 1; i >= 0; i--) {
+                enemyBullets[i].y += enemyBullets[i].speed;
+                
+                // 玩家被擊中
+                if (rectIntersect(enemyBullets[i], player)) {
+                    gameOver = true;
+                }
+
+                if (enemyBullets[i].y > canvas.height) {
+                    enemyBullets.splice(i, 1);
+                }
+            }
+
+            // 碰撞判定：玩家子彈擊中敵軍
+            for (let i = bullets.length - 1; i >= 0; i--) {
+                let hit = false;
+                for (let j = enemies.length - 1; j >= 0; j--) {
+                    if (rectIntersect(bullets[i], enemies[j])) {
+                        score += enemies[j].points;
+                        enemies.splice(j, 1);
+                        hit = true;
+                        break;
+                    }
+                }
+                if (hit) {
+                    bullets.splice(i, 1);
+                }
+            }
+
+            // 勝利判定
+            if (enemies.length === 0) {
+                victory = true;
+            }
+        }
+
+        // 繪製畫面
+        function draw() {
+            // 清除畫布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 繪製玩家
+            ctx.fillStyle = player.color;
+            // 畫一個簡單的砲塔形狀
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            ctx.fillRect(player.x + player.width/2 - 5, player.y - 10, 10, 10);
+
+            // 繪製敵人
+            enemies.forEach(enemy => {
+                ctx.fillStyle = enemy.color;
+                // 簡單的機翼造型
+                ctx.fillRect(enemy.x, enemy.y + 10, enemy.width, enemy.height - 10);
+                ctx.fillRect(enemy.x + 10, enemy.y, enemy.width - 20, 10);
+            });
+
+            // 繪製玩家子彈
+            bullets.forEach(bullet => {
+                ctx.fillStyle = bullet.color;
+                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+
+            // 繪製敵軍子彈
+            enemyBullets.forEach(bullet => {
+                ctx.fillStyle = bullet.color;
+                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+
+            // 繪製關卡與分數
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '20px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText(`關卡: ${currentLevel}`, 20, 30);
+            ctx.fillText(`戰果積分: ${score}`, 20, 60);
+
+            // 繪製結束/勝利畫面
+            if (gameOver || victory) {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = victory ? '#4ade80' : '#ef4444';
+                ctx.font = '40px Arial';
+                ctx.textAlign = 'center';
+                if (victory) {
+                    ctx.fillText(`關卡 ${currentLevel} 任務完成！敵機全數殲滅`, canvas.width / 2, canvas.height / 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '20px Arial';
+                    ctx.fillText('按下【空白鍵】開始下一關', canvas.width / 2, canvas.height / 2 + 50);
+                    ctx.fillText('按下【R】鍵重新開始第 1 關', canvas.width / 2, canvas.height / 2 + 80);
+                } else {
+                    ctx.fillText('任務失敗！防線遭突破', canvas.width / 2, canvas.height / 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '20px Arial';
+                    ctx.fillText('按下【R】鍵重新開始第 1 關', canvas.width / 2, canvas.height / 2 + 50);
+                }
+            }
+        }
+
+        // 主遊戲迴圈
+        function gameLoop() {
+            update();
+            draw();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+
+        // 啟動遊戲 (從第 1 關開始)
+        initGame(1);
+        gameLoop();
+    </script>
 </body>
 </html>
